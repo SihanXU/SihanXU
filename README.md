@@ -1,5 +1,4 @@
 <h1 align="center">Si.X</h1>
-<h3 align="center">I'm interested in doing stupid things!</h3>
   
 My homepage is [here](https://sihanxu.github.io/).
 
