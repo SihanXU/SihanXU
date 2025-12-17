@@ -128,38 +128,37 @@ const contribData = await gql(contribQ, {
 const cc = contribData.user.contributionsCollection;
 const totalContrib = cc.contributionCalendar.totalContributions ?? 0;
 
+const displayName = "Si.X"; // ✅ 改成你要显示的名字
+
 const svg = `<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="520" height="180" viewBox="0 0 520 180" role="img" aria-label="Combined GitHub stats">
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="170" viewBox="0 0 520 170" role="img" aria-label="GitHub Stats">
   <style>
-    .t{font:700 18px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill:#24292f}
-    .l{font:600 12px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill:#57606a}
+    .t{font:700 20px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill:#24292f}
+    .l{font:600 13px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill:#57606a}
     .v{font:800 22px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill:#24292f}
-    .s{font:500 11px -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; fill:#57606a}
   </style>
 
-  <rect x="0.5" y="0.5" width="519" height="179" rx="12" fill="#ffffff" stroke="#d0d7de"/>
+  <rect x="0.5" y="0.5" width="519" height="169" rx="12" fill="#ffffff" stroke="#d0d7de"/>
 
-  <text x="20" y="32" class="t">${USER} — Combined Stats</text>
+  <text x="20" y="35" class="t">${displayName}</text>
 
-  <text x="20" y="62" class="l">Stars (Pinned 6 + Personal)</text>
-  <text x="20" y="88" class="v">${fmt(mergedStars)}</text>
+  <text x="20" y="70" class="l">Stars</text>
+  <text x="20" y="100" class="v">${fmt(mergedStars)}</text>
 
-  <text x="280" y="62" class="l">Contributions (last 365d)</text>
-  <text x="280" y="88" class="v">${fmt(totalContrib)}</text>
+  <text x="160" y="70" class="l">Contributions</text>
+  <text x="160" y="100" class="v">${fmt(totalContrib)}</text>
 
-  <text x="20" y="120" class="l">Commits</text>
-  <text x="20" y="142" class="v" style="font-size:18px">${fmt(cc.totalCommitContributions ?? 0)}</text>
+  <text x="300" y="70" class="l">Commits</text>
+  <text x="300" y="100" class="v">${fmt(cc.totalCommitContributions ?? 0)}</text>
 
-  <text x="160" y="120" class="l">PRs</text>
-  <text x="160" y="142" class="v" style="font-size:18px">${fmt(cc.totalPullRequestContributions ?? 0)}</text>
+  <text x="420" y="70" class="l">PRs</text>
+  <text x="420" y="100" class="v">${fmt(cc.totalPullRequestContributions ?? 0)}</text>
 
-  <text x="280" y="120" class="l">Issues</text>
-  <text x="280" y="142" class="v" style="font-size:18px">${fmt(cc.totalIssueContributions ?? 0)}</text>
+  <text x="20" y="135" class="l">Issues</text>
+  <text x="20" y="160" class="v" style="font-size:18px">${fmt(cc.totalIssueContributions ?? 0)}</text>
 
-  <text x="400" y="120" class="l">Reviews</text>
-  <text x="400" y="142" class="v" style="font-size:18px">${fmt(cc.totalPullRequestReviewContributions ?? 0)}</text>
-
-  <text x="20" y="168" class="s">Updated ${to.toISOString().slice(0,10)} • Stars merged = personal repos + pinned repos (deduped)</text>
+  <text x="160" y="135" class="l">Reviews</text>
+  <text x="160" y="160" class="v" style="font-size:18px">${fmt(cc.totalPullRequestReviewContributions ?? 0)}</text>
 </svg>
 `;
 
